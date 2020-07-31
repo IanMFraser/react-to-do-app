@@ -13,8 +13,12 @@ const App = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    setNewTask('')
-    setToDos([...toDos, newTask])
+    if(newTask === ''){
+      alert('task cannot be empty')
+    } else {
+      setNewTask('')
+      setToDos([...toDos, newTask])
+    }
   }
 
   return(

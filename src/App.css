@@ -28,6 +28,7 @@ body {
   border: none;
   font-size: 1.25rem;
   background-color: #a6ecaf;
+  outline: none;
 }
 
 .addTaskButton {
@@ -36,6 +37,7 @@ body {
   font-size: 2rem;
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
 .todoForm input{
