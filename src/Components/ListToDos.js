@@ -1,10 +1,9 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-const ListToDos = ({todos}) => {
+const ListToDos = ({todos, checkedHandler}) => {
     return(
-        todos.map((task, index) => <ListItem key={index} task={task}/>
-    )
+        todos.map((task) => <ListItem name={task.id} key={task.id} task={task.items} checkedHandler={checkedHandler} />)
     )
 }
 

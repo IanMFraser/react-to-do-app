@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ListItem = ({task}) => {
+const ListItem = ({name, task, checkedHandler}) => {
     return(
         <div className="listItem">
-            <input type="checkbox"/>
+            <input name={name} type="checkbox" onChange={checkedHandler}/>
             <p>{task}</p>
         </div>
     )
