@@ -45,8 +45,8 @@ const App = () => {
   return(
     <div className="container">
       <div className="title">
-        <h1>To Do </h1>
-        <FontAwesomeIcon icon={faTrash}/>
+        <h1>To Do</h1>
+        <button><FontAwesomeIcon icon={faTrash}/></button>
       </div>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
       <ListToDos todos={toDos} checkedHandler={checkedHandler}/>
