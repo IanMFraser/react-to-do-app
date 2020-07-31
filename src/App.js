@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import ToDoForm from './Components/ToDoForm';
 import ListToDos from './Components/ListToDos';
-import './App.css'
+import './App.css';
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const App = () => {
   const [toDos, setToDos] = useState([]);
@@ -40,10 +42,12 @@ const App = () => {
     }
     setToDos([...newTodo])
   }
-
   return(
     <div className="container">
-      <h1>To Do</h1>
+      <div className="title">
+        <h1>To Do </h1>
+        <FontAwesomeIcon icon={faTrash}/>
+      </div>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
       <ListToDos todos={toDos} checkedHandler={checkedHandler}/>
     </div>
