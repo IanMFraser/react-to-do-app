@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #123213;
+  background-color: white;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: #a6ecaf;
+}
+
+.container h1 {
+  margin-left: 20px;
+}
+
+.formContainer {
+  position: relative;
+  margin-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #94da9c;
+}
+
+.formContainer input {
+  border: none;
+  font-size: 1.25rem;
+  background-color: #a6ecaf;
+}
+
+.addTaskButton {
+  border: none;
+  background-color: #a6ecaf;
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.todoForm input{
+  position: absolute;
+  padding-left: 10px;
+  bottom: 15px;
+  margin: 0 auto;
+}
+
+.listItem {
+  margin-left: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #94da9c;
+}
+.listItem p{
+  display: inline-block;
+}
+.listItem input {
+  border:1px solid #518559;
+  transform: scale(1.25);
+}
+
+.listItem input[type=checkbox]:checked + p {
+  text-decoration: line-through;
+}
