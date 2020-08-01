@@ -53,11 +53,17 @@ const App = () => {
     }
     setToDos([...newTodo])
   }
+
+  //clear the form of all tasks
+  const deleteFormHandler = (e) => {
+    setToDos([]);
+  }
+
   return(
     <div className="container">
       <div className="title">
         <h1>To Do</h1>
-        <button><FontAwesomeIcon icon={faTrash}/></button>
+        <button onClick={deleteFormHandler}><FontAwesomeIcon icon={faTrash}/></button>
       </div>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
       <ListToDos todos={toDos} checkedHandler={checkedHandler}/>
