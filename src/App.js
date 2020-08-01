@@ -14,22 +14,33 @@ const App = () => {
     },
     {
       id: 1,
-      items: 'delete button clears all tasks',
+      items: 'better way to create id for each task',
+      isSelected: false
+    },
+    {
+      id: 2,
+      items: 'warning message before delete',
       isSelected: false
     }
   ]);
   const [newTask, setNewTask] = useState('');
+  const [newTitle, setNewTitle] = useState('');
 
   //handler to update the new task input when typed
   const onChange = (e) => {
     setNewTask(e.target.value)
   }
 
+  const generateId = () => {
+    let id = toDos.length;
+    return id++;
+  }
+
   //handler to update toDo list on form submission
   const onSubmit = (e) => {
     e.preventDefault()
     const newItem = {
-      id: toDos.length,
+      id: generateId(),
       items: newTask,
       isSelected: false
     }
@@ -56,13 +67,21 @@ const App = () => {
 
   //clear the form of all tasks
   const deleteFormHandler = (e) => {
-    setToDos([]);
+    let result = window.confirm('Delete list?');
+    if (result){
+      setToDos([]);
+      setNewTitle('');
+    }
+  }
+
+  const titleHandler = (e) => {
+    setNewTitle(e.target.value);
   }
 
   return(
     <div className="container">
       <div className="title">
-        <h1>To Do</h1>
+        <input type="text" placeholder="To Do" value={newTitle} onChange={titleHandler}/>
         <button onClick={deleteFormHandler}><FontAwesomeIcon icon={faTrash}/></button>
       </div>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
