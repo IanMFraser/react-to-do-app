@@ -9,17 +9,17 @@ const App = () => {
   const [toDos, setToDos] = useState([
     {
       id: 0,
-      items: 'customize title card',
+      items: 'implement todo component',
       isSelected: false
     },
     {
       id: 1,
-      items: 'better way to create id for each task',
+      items: 'new main page which holds a list of lists',
       isSelected: false
     },
     {
       id: 2,
-      items: 'warning message before delete',
+      items: 'backend storage for saving lists',
       isSelected: false
     }
   ]);
