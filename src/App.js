@@ -6,7 +6,18 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const App = () => {
-  const [toDos, setToDos] = useState([]);
+  const [toDos, setToDos] = useState([
+    {
+      id: 0,
+      items: 'customize title card',
+      isSelected: false
+    },
+    {
+      id: 1,
+      items: 'delete button clears all tasks',
+      isSelected: false
+    }
+  ]);
   const [newTask, setNewTask] = useState('');
 
   //handler to update the new task input when typed
