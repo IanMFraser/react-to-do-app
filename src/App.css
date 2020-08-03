@@ -1,5 +1,5 @@
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,7 +9,7 @@ body {
 
 .container {
   position: relative;
-  max-width: 500px;
+  width: 500px;
   margin: 0 auto;
   padding: 25px;
   border-radius: 3px;
@@ -19,7 +19,9 @@ body {
   background-color: #a6ecaf;
 }
 
-.title{
+.title {
+  display: flex;
+  justify-content: space-between;
   margin: 20px;
 }
 .title input {
@@ -33,7 +35,6 @@ body {
 }
 
 .title button {
-  float: right;
   background-color: #a6ecaf;
   border: none;
   color: #4b6c50;
@@ -48,6 +49,8 @@ body {
 
 
 .formContainer {
+  display: flex;
+  justify-content: flex-start;
   position: relative;
   margin-left: 20px;
   padding-bottom: 10px;
@@ -88,10 +91,14 @@ body {
   margin: 0 auto;
 }
 
+.listToDos ul{
+  padding-left: 30px;
+}
+
 .listItem {
-  margin-left: 20px;
   padding: 10px 10px;
   border-bottom: 1px solid #94da9c;
+  list-style-type: none;
 }
 
 .listItem input {

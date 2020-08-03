@@ -83,7 +83,7 @@ const App = () => {
     <div className="container">
       <TitleBar newTitle={newTitle} titleHandler={titleHandler} deleteFormHandler={deleteFormHandler}/>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
-      <ListToDos todos={toDos} checkedHandler={checkedHandler}/>
+      <ListToDos todos={toDos} checkedHandler={checkedHandler} />
     </div>
   )
 }

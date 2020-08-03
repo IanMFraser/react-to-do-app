@@ -3,7 +3,12 @@ import ListItem from './ListItem'
 
 const ListToDos = ({todos, checkedHandler}) => {
     return(
-        todos.map((task) => <ListItem name={task.id} key={task.id} task={task.items} checkedHandler={checkedHandler} />)
+        <div class="listToDos">
+            <ul>
+                {todos.map((task) => <ListItem name={task.id} key={task.id} task={task.items} checkedHandler={checkedHandler} />)}
+            </ul>
+        </div>
+        
     )
 }
 
