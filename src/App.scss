@@ -1,4 +1,5 @@
-$background-color: #a6ecaf;
+$body-background-color: white;
+$app-background-color: #a6ecaf;
 $text-color: #123213;
 
 body {
@@ -6,5 +7,5 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: $text-color;
-    background-color: white;
+    background-color: $body-background-color;
   }
