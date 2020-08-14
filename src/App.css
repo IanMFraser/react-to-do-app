@@ -7,6 +7,20 @@ html, body {
   background-color: white;
 }
 
+button {
+  background-color: #a6ecaf;
+  border: none;
+  color: #4b6c50;
+  margin: 10px;
+  font-size: large;
+  outline-width: 0;
+}
+
+button:hover {
+  background-color: #9bd8a4;
+  border-radius: 15px;
+}
+
 .container {
   position: relative;
   width: 500px;
@@ -19,11 +33,13 @@ html, body {
   background-color: #a6ecaf;
 }
 
+
 .title {
   display: flex;
   justify-content: space-between;
   margin: 20px;
 }
+
 .title input {
   display: inline-block;
   background-color: #a6ecaf;
@@ -33,20 +49,6 @@ html, body {
   outline-width: 0;
   color: #3c5740;;
 }
-
-.title button {
-  background-color: #a6ecaf;
-  border: none;
-  color: #4b6c50;
-  margin: 10px;
-  font-size: large;
-  outline-width: 0;
-}
-
-.title button:hover {
-  color: #3c5740;
-}
-
 
 .formContainer {
   display: flex;
@@ -66,17 +68,10 @@ html, body {
 }
 
 .addTaskButton {
-  border: none;
-  background-color: #a6ecaf;
   font-size: 2rem;
   margin: 0;
   padding: 0;
   outline: none;
-  color: #4b6c50;
-}
-
-.addTaskButton:hover {
-  background-color:#96d89f;
 }
 
 .todoForm {
