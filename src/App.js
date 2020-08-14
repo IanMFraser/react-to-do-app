@@ -5,26 +5,11 @@ import TitleBar from './Components/TitleBar';
 import './App.css';
 // import './App.scss';
 
-const App = () => {
-  const [toDos, setToDos] = useState([
-    {
-      id: 0,
-      items: 'implement title-bar  component',
-      isSelected: false
-    },
-    {
-      id: 1,
-      items: 'refactor css to use flexbox and sass',
-      isSelected: false
-    },
-    {
-      id: 2,
-      items: 'install json server for external storage of lists',
-      isSelected: false
-    }
-  ]);
+const App = ({lists}) => {
+  // console.log(lists["items"]);
+  const [toDos, setToDos] = useState(lists["items"]);
   const [newTask, setNewTask] = useState('');
-  const [newTitle, setNewTitle] = useState('');
+  const [newTitle, setNewTitle] = useState(lists["title"]);
 
   //handler to update whether the task is finished or not. - not sure if i need this.
   const checkedHandler= (e) => {
