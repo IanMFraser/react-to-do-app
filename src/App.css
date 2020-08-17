@@ -33,6 +33,10 @@ button:hover {
   background-color: #a6ecaf;
 }
 
+.main-header {
+  display: flex;
+  justify-content: flex-start;
+}
 
 .title {
   display: flex;
