@@ -4,7 +4,7 @@ import ListToDos from './ListToDos';
 import TitleBar from './TitleBar';
 import '../App.css';
 
-const ToDoPage = ({lists}) => {
+const ToDoPage = ({lists, deleteListHandler}) => {
  
   const [toDos, setToDos] = useState(lists["items"]);
   const [newTask, setNewTask] = useState('');
@@ -22,13 +22,13 @@ const ToDoPage = ({lists}) => {
   }
 
   //clear the form of all tasks
-  const deleteFormHandler = () => {
-    let result = window.confirm('Delete list?');
-    if (result){
-      setToDos([]);
-      setNewTitle('');
-    }
-  }
+  // const deleteFormHandler = () => {
+  //   let result = window.confirm('Delete list?');
+  //   if (result){
+  //     setToDos([]);
+  //     setNewTitle('');
+  //   }
+  // }
 
   const generateId = () => {
     let id = toDos.length;
@@ -64,7 +64,7 @@ const ToDoPage = ({lists}) => {
 
   return(
     <div className="container"> 
-      <TitleBar newTitle={newTitle} titleHandler={titleHandler} deleteFormHandler={deleteFormHandler}/>
+      <TitleBar newTitle={newTitle} titleHandler={titleHandler} deleteFormHandler={() => {deleteListHandler(newTitle)}}/>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
       <ListToDos todos={toDos} checkedHandler={checkedHandler} />
     </div>

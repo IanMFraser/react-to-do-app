@@ -73,7 +73,7 @@ const App = () => {
   return(
     <Router>
       <Switch>
-        { toDoLists.map((list,i) => <Route key={ i } path={ `/${list["title"]}` } > <ToDoPage lists={ list } /> </Route> ) }
+        { toDoLists.map((list,i) => <Route key={ i } path={ `/${list["title"]}` } > <ToDoPage lists={ list } deleteListHandler={deleteListHandler} /> </Route> ) }
         <Route path='/'>
           <MainPage lists={ toDoLists } newListHandler={ newListHandler } deleteListHandler={deleteListHandler}/>
         </Route>
