@@ -9,9 +9,9 @@ const TitleBar = ({newTitle, titleHandler, deleteFormHandler}) => {
     let history = useHistory();
     return( 
         <div className="title">
-            <button onClick={history.goBack}><FontAwesomeIcon icon={faArrowLeft}/></button>
+            <button onClick={history.goBack} title="back to home"><FontAwesomeIcon icon={faArrowLeft}/></button>
             <input type="text" placeholder="To Do" value={newTitle} onChange={titleHandler}/>
-            <button onClick={deleteFormHandler}><FontAwesomeIcon icon={faTrash}/></button>
+            <button onClick={deleteFormHandler} title="delete list"><FontAwesomeIcon icon={faTrash}/></button>
         </div>
     )
 }
