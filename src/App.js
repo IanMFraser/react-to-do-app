@@ -57,16 +57,25 @@ const App = () => {
       "title": title,
       "items": []
     }
-
     setToDoLists([...toDoLists, newList])
   }
-  
+
+    //clear the form of all tasks
+    const deleteListHandler = (title) => {
+      let result = window.confirm('Delete list?');
+      if ( result) {
+        const updatedLists = toDoLists.filter(obj => obj.title !== title)
+        setToDoLists(updatedLists)
+      }
+    }
+
+
   return(
     <Router>
       <Switch>
         { toDoLists.map((list,i) => <Route key={ i } path={ `/${list["title"]}` } > <ToDoPage lists={ list } /> </Route> ) }
         <Route path='/'>
-          <MainPage lists={ toDoLists } newListHandler={ newListHandler } />
+          <MainPage lists={ toDoLists } newListHandler={ newListHandler } deleteListHandler={deleteListHandler}/>
         </Route>
       </Switch>
     </Router>
