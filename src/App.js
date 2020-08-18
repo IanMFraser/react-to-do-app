@@ -49,26 +49,24 @@ const App = () => {
       ]
     }
   ]) 
-  
-  // const history = useHistory()
 
-  const newListHandler = (e) => {
-    // e.preventDefault();
+  const newListHandler = () => {
+    const title = window.prompt("Please name new To-Do list:", "list name")
+    //set a temp title and push an empty list 
     const newList = {
-      "title": "newToDo",
+      "title": title,
       "items": []
     }
 
-    console.log(newList["title"])
     setToDoLists([...toDoLists, newList])
   }
-
+  
   return(
     <Router>
       <Switch>
-        {toDoLists.map((list,i) => <Route key={i} path={`/${list["title"]}`} > <ToDoPage lists={list} /> </Route> )}
+        { toDoLists.map((list,i) => <Route key={ i } path={ `/${list["title"]}` } > <ToDoPage lists={ list } /> </Route> ) }
         <Route path='/'>
-          <MainPage lists={toDoLists} newListHandler={newListHandler} />
+          <MainPage lists={ toDoLists } newListHandler={ newListHandler } />
         </Route>
       </Switch>
     </Router>
