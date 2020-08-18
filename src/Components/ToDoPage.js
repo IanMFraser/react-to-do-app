@@ -5,7 +5,7 @@ import TitleBar from './TitleBar';
 import '../App.css';
 
 const ToDoPage = ({lists}) => {
-  console.log(lists["items"]);
+ 
   const [toDos, setToDos] = useState(lists["items"]);
   const [newTask, setNewTask] = useState('');
   const [newTitle, setNewTitle] = useState(lists["title"]);
@@ -55,7 +55,6 @@ const ToDoPage = ({lists}) => {
       setNewTask('')
       setToDos([...toDos, newItem])
     }
-    console.log(toDos)
   }
 
   //handler to update the title input when typed
@@ -64,7 +63,7 @@ const ToDoPage = ({lists}) => {
   }
 
   return(
-    <div className="container">
+    <div className="container"> 
       <TitleBar newTitle={newTitle} titleHandler={titleHandler} deleteFormHandler={deleteFormHandler}/>
       <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
       <ListToDos todos={toDos} checkedHandler={checkedHandler} />

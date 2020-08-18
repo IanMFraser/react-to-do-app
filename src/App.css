@@ -7,6 +7,10 @@ html, body {
   background-color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   background-color: #a6ecaf;
   border: none;
@@ -19,6 +23,11 @@ button {
 button:hover {
   background-color: #9bd8a4;
   border-radius: 15px;
+}
+li {
+  padding: 10px 10px;
+  list-style-type: none;
+  border-bottom: 1px solid #94da9c;
 }
 
 .container {
@@ -35,8 +44,15 @@ button:hover {
 
 .main-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  margin: 20px;
 }
+
+.main-header button {
+  font-size: 2em;
+}
+
+
 
 .title {
   display: flex;
