@@ -3,40 +3,16 @@ import ToDoForm from './ToDoForm';
 import ListToDos from './ListToDos';
 import TitleBar from './TitleBar';
 import '../App.css';
+import { withRouter } from 'react-router-dom'
 
-const ToDoPage = ({lists, deleteListHandler}) => {
+const ToDoPage = ({ lists, deleteListHandler }) => {
  
   const [toDos, setToDos] = useState(lists["items"]);
   const [newTask, setNewTask] = useState('');
   const [newTitle, setNewTitle] = useState(lists["title"]);
-
-  //handler to update whether the task is finished or not. - not sure if i need this.
-  const checkedHandler= (e) => {
-    const elementIndex = toDos.findIndex(el => el.id === Number(e.target.name));
-    let newTodo = [...toDos];
-    newTodo[elementIndex] = {
-      ...newTodo[elementIndex],
-      isSelected: e.target.checked
-    }
-    setToDos([...newTodo])
-  }
-
-  //clear the form of all tasks
-  // const deleteFormHandler = () => {
-  //   let result = window.confirm('Delete list?');
-  //   if (result){
-  //     setToDos([]);
-  //     setNewTitle('');
-  //   }
-  // }
-
-  const generateId = () => {
-    let id = toDos.length;
-    return id++;
-  }
   
   //handler to update the new task input when typed
-  const onChange = (e) => {
+  const newTaskHandler = (e) => {
     setNewTask(e.target.value)
   }
 
@@ -44,9 +20,7 @@ const ToDoPage = ({lists, deleteListHandler}) => {
   const onSubmit = (e) => {
     e.preventDefault()
     const newItem = {
-      id: generateId(),
-      items: newTask,
-      isSelected: false
+      items: newTask
     }
   
     if(newTask === ''){
@@ -65,10 +39,10 @@ const ToDoPage = ({lists, deleteListHandler}) => {
   return(
     <div className="container"> 
       <TitleBar newTitle={newTitle} titleHandler={titleHandler} deleteFormHandler={() => {deleteListHandler(newTitle)}}/>
-      <ToDoForm newTask={newTask} changeHandler={onChange} submitHandler={onSubmit} />
-      <ListToDos todos={toDos} checkedHandler={checkedHandler} />
+      <ToDoForm newTask={newTask} changeHandler={newTaskHandler} submitHandler={onSubmit} />
+      <ListToDos todos={toDos}  />
     </div>
   )
 }
 
-export default ToDoPage;
+export default withRouter(ToDoPage);

@@ -1,6 +1,7 @@
 import React from 'react';
 import DisplayLists from './DisplayLists';
 import '../App.css';
+import { withRouter } from 'react-router-dom';
 
 const MainPage = ({ lists, newListHandler, deleteListHandler }) => {
 
@@ -15,4 +16,4 @@ const MainPage = ({ lists, newListHandler, deleteListHandler }) => {
     )
 }
 
-export default MainPage;
+export default withRouter(MainPage);

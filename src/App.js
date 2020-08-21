@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import Db from './db.json';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import MainPage from './Components/MainPage';
 import ToDoPage from './Components/ToDoPage';
 import './App.css';
@@ -9,42 +9,32 @@ const App = () => {
   
   const [toDoLists, setToDoLists] = useState([
     {
+      "id": 0,
       "title": "'To Do App' To Do",
       "items": [
           {
-              "id": 0,
-              "items": "implement title-bar  component",
-              "isSelected": false
+            "items": "implement title-bar  component",
           },
           {
-              "id": 1,
-              "items": "refactor css to use flexbox and sass",
-              "isSelected": false
+            "items": "refactor css to use flexbox and sass",
           },
           {
-              "id": 2,
-              "items": "install json server for external storage of lists",
-              "isSelected": false
+            "items": "install json server for external storage of lists",
           }
       ]
     },
     {
+      "id": 1,
       "title": "Errands",
       "items": [
           {
-              "id": 0,
-              "items": "laundry",
-              "isSelected": false
+            "items": "laundry"
           },
           {
-              "id": 1,
-              "items": "cook lunch",
-              "isSelected": false
+            "items": "cook lunch"
           },
           {
-              "id": 2,
-              "items": "clean litter box",
-              "isSelected": false
+            "items": "clean litter box"
           }
       ]
     }
@@ -59,16 +49,17 @@ const App = () => {
     }
     setToDoLists([...toDoLists, newList])
   }
-
-    //clear the form of all tasks
-    const deleteListHandler = (title) => {
-      let result = window.confirm('Delete list?');
-      if ( result) {
-        const updatedLists = toDoLists.filter(obj => obj.title !== title)
-        setToDoLists(updatedLists)
-      }
+  
+  //clear the form of all tasks
+  const deleteListHandler = (title) => {
+    let result = window.confirm('Delete list?');
+      
+    if ( result) {
+      const updatedLists = toDoLists.filter(obj => obj.title !== title)
+      setToDoLists(updatedLists)
+      
     }
-
+  }
 
   return(
     <Router>
