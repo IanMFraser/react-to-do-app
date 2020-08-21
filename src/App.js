@@ -40,6 +40,7 @@ const App = () => {
     }
   ]) 
 
+  //create a new todo page
   const newListHandler = () => {
     const title = window.prompt("Please name new To-Do list:", "list name")
     //set a temp title and push an empty list 
@@ -50,7 +51,7 @@ const App = () => {
     setToDoLists([...toDoLists, newList])
   }
   
-  //clear the form of all tasks
+  //delete a todo page by it's title
   const deleteListHandler = (title) => {
     let result = window.confirm('Delete list?');
       
