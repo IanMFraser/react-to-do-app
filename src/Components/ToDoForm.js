@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ToDoForm = ({submitHandler, newTask, changeHandler}) => {
+const ToDoForm = ({ submitHandler, newTask, changeHandler }) => {
     return(
         <div className="formContainer">
             <form className="todoForm" onSubmit={submitHandler}>

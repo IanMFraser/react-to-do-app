@@ -3,15 +3,14 @@ import DisplayLists from './DisplayLists';
 import '../App.css';
 import { withRouter } from 'react-router-dom';
 
-const MainPage = ({ lists, newListHandler, deleteListHandler }) => {
-
+const MainPage = ({ toDoLists, newListHandler, deleteListHandler, editTitleHandler }) => {
     return(
         <div className="container">
             <div className="main-header">
                 <h1>To Do List App</h1>
-                <button onClick={ newListHandler } title="add new list">+</button>
+                <button onClick={newListHandler} title="add new list">+</button>
             </div>
-            <DisplayLists lists={ lists } deleteListHandler={deleteListHandler} />
+            <DisplayLists lists={toDoLists} deleteListHandler={deleteListHandler} editTitleHandler={editTitleHandler}/>
         </div>
     )
 }

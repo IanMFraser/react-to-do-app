@@ -5,13 +5,14 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-const TitleBar = ({newTitle, titleHandler, deleteFormHandler}) => {
+const TitleBar = ({ title, deleteFormHandler }) => {
     let history = useHistory();
+    
     return( 
         <div className="title">
-            <button onClick={ history.goBack } title="back to home"><FontAwesomeIcon icon={ faArrowLeft }/></button>
-            <input type="text" placeholder="To Do" value={ newTitle } onChange={ titleHandler }/>
-            <button onClick={ deleteFormHandler } title="delete list"><FontAwesomeIcon icon={ faTrash }/></button>
+            <button onClick={history.goBack} title="back to home"><FontAwesomeIcon icon={faArrowLeft}/></button>
+            <h1>{title}</h1>
+            <button onClick={deleteFormHandler} title="delete list"><FontAwesomeIcon icon={faTrash}/></button>
         </div>
     )
 }
