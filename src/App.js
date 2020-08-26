@@ -46,6 +46,29 @@ const App = () => {
       ]
     }
   ]) 
+  const [ newTask, setNewTask ] = useState('');
+
+  //handler to update the new task input when typed
+  const newTaskHandler = (e) => {
+    setNewTask(e.target.value)
+  }
+
+   //event handler to update toDo list on form submission
+   const onSubmit = (e, id) => {
+    e.preventDefault()
+    const toDoCopy = [...toDoLists]
+    const tempTask = {
+      id: toDoCopy.length,
+      items: newTask
+    }
+    toDoCopy.forEach((list) => {
+      if(list.id === id){
+        list.items.push(tempTask)
+      }
+    })
+    setNewTask('')
+    setToDoLists([...toDoCopy])
+  }
 
   //create a new todo page
   const newListHandler = () => {
@@ -70,8 +93,7 @@ const App = () => {
             
     if (result) {
       const updatedLists = toDoLists.filter(obj => obj.title !== title)
-      setToDoLists(updatedLists)
-            
+      setToDoLists(updatedLists)  
     }
   }
 
@@ -86,7 +108,7 @@ const App = () => {
     })
     setToDoLists([...toDoCopy])
   }
-  
+  //edit title handler
   const editTitle = (id, title) => {
     const newTitle = window.prompt("Please enter a new title: ", title);
 
@@ -98,17 +120,22 @@ const App = () => {
     
   }
 
-  console.log(toDoLists)
-
-
   return(
     <Router>
       <Switch>
         <Route path={"/todo/:id"}>
-          <ToDoPage deleteListHandler={deleteListHandler} changeTitle={changeTitle} />
+          <ToDoPage 
+           deleteListHandler={deleteListHandler} 
+            onSubmit={onSubmit}
+            taskHandler={newTaskHandler} 
+            newTask={newTask} />
         </Route>
         <Route path='/'>
-          <MainPage toDoLists={toDoLists} newListHandler={newListHandler} deleteListHandler= {deleteListHandler} editTitleHandler={editTitle}/>
+          <MainPage 
+            toDoLists={toDoLists} 
+            newListHandler={newListHandler} 
+            deleteListHandler= {deleteListHandler} 
+            editTitleHandler={editTitle}/>
         </Route>
       </Switch>
     </Router>
