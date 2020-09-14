@@ -18,7 +18,7 @@ const DisplayLists = ({ lists, deleteListHandler, editTitleHandler }) => {
                     return <li key={list.title}>
                         <Link to={{
                                     pathname: `/todo/${list.id}`,
-                                    state: {id:list.id, lists: list}
+                                    state: {id: list.id, lists: list}
                                 }}>
                             {list.title}
                         </Link> 
@@ -29,7 +29,7 @@ const DisplayLists = ({ lists, deleteListHandler, editTitleHandler }) => {
                     </button> 
                     <button 
                         onClick={() => {editTitleHandler(list.id, list.title)}} 
-                        title="delete list">
+                        title="edit list">
                         <FontAwesomeIcon icon={faPencilAlt}/>
                     </button> 
                     </li>

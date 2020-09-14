@@ -1,0 +1,46 @@
+{
+  "todos": [
+    {
+      "id": 0,
+      "title": "Morning",
+      "items": [
+          {
+            "id": "task-0",
+            "items": "drink tea",
+            "isChecked": false
+          },
+          {
+            "id": "task-1",
+            "items": "exercise",
+            "isChecked": false
+          },
+          {
+            "id": "task-2",
+            "items": "make breakfast",
+            "isChecked": false
+          }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Afternoon",
+      "items": [
+          {
+            "id": "task-0", 
+            "items": "laundry",
+            "isChecked": false
+          },
+          {
+            "id": "task-1",
+            "items": "cook lunch",
+            "isChecked": false
+          },
+          {
+            "id": "task-2",
+            "items": "code",
+            "isChecked": false
+          }
+      ]
+    }
+  ]
+}
