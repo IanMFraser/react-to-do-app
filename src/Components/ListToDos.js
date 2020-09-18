@@ -7,9 +7,9 @@ const ListToDos = ({ todos, isCheckedHandler }) => {
         <div className="listToDos">
             <ul>
                 { 
-                todos.map((task, i) => 
-                    <ListItem name={i} key={`task-${i}`} task={task.items} isCheckedHandler={isCheckedHandler} isChecked={task.isChecked}
-                />) 
+                todos.map((task, id) => 
+                        <ListItem name={id} key={`task-${id}`} task={task.items} isCheckedHandler={(e) => {isCheckedHandler(e, task.id)}} isChecked={task.isChecked} />
+                    )
                 }
             </ul>
         </div>

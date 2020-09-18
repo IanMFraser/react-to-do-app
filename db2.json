@@ -1,0 +1,78 @@
+{
+  "todos": [
+    {
+      "id": 0,
+      "title": "morning"
+    },
+    {
+      "id": 1,
+      "title": "evening"
+    },
+    {
+      "id": 2,
+      "title": "afternoon"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "items": "drink tea",
+      "isChecked": false,
+      "todosId": 0
+    },
+    {
+      "id": 1,
+      "items": "exercise",
+      "isChecked": false,
+      "todosId": 0
+    },
+    {
+      "id": 2,
+      "items": "make breakfast",
+      "isChecked": false,
+      "todosId": 0
+    },
+    {
+      "id": 3,
+      "items": "laundry",
+      "isChecked": true,
+      "todosId": 1
+    },
+    {
+      "id": 4,
+      "items": "cook lunch",
+      "isChecked": false,
+      "todosId": 1
+    },
+    {
+      "id": 5,
+      "items": "code",
+      "isChecked": false,
+      "todosId": 1
+    },
+    {
+      "id": 6,
+      "items": "iced coffee",
+      "isChecked": true,
+      "todosId": 2
+    },
+    {
+      "id": 7,
+      "items": "supercollider",
+      "isChecked": false,
+      "todosId": 2
+    },
+    {
+      "id": 8,
+      "items": "feed cat",
+      "isChecked": true,
+      "todosId": 2
+    },
+    {
+      "id": 9,
+      "items": "job listings",
+      "isChecked": false,
+      "todosId": 0
+    }
+  ]
+}

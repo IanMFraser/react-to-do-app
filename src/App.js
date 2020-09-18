@@ -1,57 +1,37 @@
-import React, {useState} from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import MainPage from './Components/MainPage';
-import ToDoPage from './Components/ToDoPage';
-import './App.css';
+import React, { useState, useEffect } from 'react'  
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import MainPage from './Components/MainPage'
+import ToDoPage from './Components/ToDoPage'
+import './App.css'
+import axios from 'axios'
 
 const App = () => {
+
   //toDoLists state holds aa list of objects that represent todo lists
   //each object has an id (int), a title (string), and an items key(list of objects)
-  const [toDoLists, setToDoLists] = useState([
-    {
-      "id": 0,
-      "title": "Morning",
-      "items": [
-          {
-            "id": "task-0",
-            "items": "drink tea",
-            "isChecked": false
-          },
-          {
-            "id": "task-1",
-            "items": "exercise",
-            "isChecked": false
-          },
-          {
-            "id": "task-2",
-            "items": "make breakfast",
-            "isChecked": false
-          }
-      ]
-    },
-    {
-      "id": 1,
-      "title": "Afternoon",
-      "items": [
-          {
-            "id": "task-0", 
-            "items": "laundry",
-            "isChecked": false
-          },
-          {
-            "id": "task-1",
-            "items": "cook lunch",
-            "isChecked": false
-          },
-          {
-            "id": "task-2",
-            "items": "code",
-            "isChecked": false
-          }
-      ]
-    }
-  ]) 
-  const [ newTask, setNewTask ] = useState('');
+  const [ toDoLists, setToDoLists ] = useState([])
+  const [ tasks, setTasks ] = useState([])
+  const [ newTask, setNewTask ] = useState('')
+  const [ isLoading, setIsLoading ] = useState(true)
+
+  const url = 'http://localhost:3001'
+
+  useEffect(() => {
+    axios.all([
+      axios.get(`${url}/todos`), 
+      axios.get(`${url}/tasks`)
+    ])
+    .then(axios.spread((obj1, obj2) => {
+      setToDoLists(obj1.data);
+      setTasks(obj2.data)
+      setIsLoading(false)
+    }))
+    .catch(error => console.log(error))
+  }, [])
+
+  if (isLoading) {
+    return <div className="container">Loading...</div>
+  }
 
   //handler to update the new task input when typed
   const newTaskHandler = (e) => {
@@ -61,23 +41,27 @@ const App = () => {
    //event handler to update toDo list on form submission
    const newTaskSubmit = (e, id) => {
     e.preventDefault()
-    const toDoCopy = [...toDoLists]
-    const newId = toDoLists[id].items.length
+    const newId = tasks.length
+
     if (newTask === ''){
       alert("Task cannot be empty")
     } else {
       const tempTask = {
-        id: `task-${newId}`,
+        id: newId,
         items: newTask,
-        isChecked: false
+        isChecked: false,
+        todosId: id
       }
-      toDoCopy.forEach((list) => {
-        if(list.id === id){
-          list.items.push(tempTask)
-        }
-      })
-      setNewTask('')
-      setToDoLists([...toDoCopy])
+
+      axios
+        .post(`${url}/tasks`, tempTask)
+        .then(response => {
+          setTasks([...tasks, response.data])
+          setNewTask('')
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 
@@ -91,33 +75,43 @@ const App = () => {
     } else if (title !== null) {
       const newList = {
         "id": newId,
-        "title": title,
-        "items": []
+        "title": title
       }
-      setToDoLists([...toDoLists, newList])
+
+      axios
+      .post(`${url}/todos`, newList)
+      .then(response => {
+        setToDoLists(prevState => [...prevState, response.data])
+      })
+      
     }
   }
         
   //delete a todo page by it's title
-  const deleteListHandler = (title) => {
+  const deleteListHandler = (id) => {
+    const todoCopy = toDoLists.filter(obj => obj.id !== id);
     let result = window.confirm('Delete list?');
-            
+      
     if (result) {
-      const updatedLists = toDoLists.filter(obj => obj.title !== title)
-      setToDoLists(updatedLists)  
+      axios
+        .delete(`${url}/todos/${id}`)
+        .then(response => {
+          console.log(response.data)
+          setToDoLists(todoCopy)
+        })
     }
   }
 
   //changeTitle
-  const changeTitle = (id, newTitle) => {
-    const toDoCopy = [...toDoLists]
+  const updateTitle = (id, newTitle) => {
+    const  obj = toDoLists.find( l => l.id === id)
+    const updateObj = {...obj,"title": newTitle}
 
-    toDoCopy.forEach((list) => {
-      if(list.id === id){
-        list.title = newTitle;
-      }
+    axios.put(`${url}/todos/${id}`, updateObj)
+    .then(response => {
+      setToDoLists(toDoLists.map(list => list.id !== id ? list : response.data))
     })
-    setToDoLists([...toDoCopy])
+    
   }
 
   //edit title handler
@@ -127,25 +121,21 @@ const App = () => {
     if (newTitle === '') {
       alert('title can not be empty')
     } else if (newTitle !== null) {
-      changeTitle(id, newTitle)
-    }
+        updateTitle(id, newTitle)
+      }
   }
 
   const isCheckedHandler = (e, id) => {
-    const tempList = [...toDoLists]
-    const tempItems = tempList[id].items
-    // const tempTitle = tempList[id].title
-    //console.log(e.target.name)
-    tempItems[e.target.name].isChecked = e.target.checked
-    //console.log(tempItems)
-    // const updatedList = {
-    //   "id": id,
-    //   "title": tempTitle,
-    //   "items": tempItems
-    // }
-    console.log(tempList)
-    setToDoLists(tempList)
-    // console.log(toDoLists)
+    console.log(e.target.checked)
+    console.log(id)
+    const task = tasks.find(task => task.id === id)
+    const updateTask = { ...task, "isChecked": e.target.checked}
+    
+    axios.put(`${url}/tasks/${id}`, updateTask)
+      .then(response => {
+        setTasks(tasks.map(task => task.id !== id ? task : response.data))
+      })
+
   }
   
   return(
@@ -156,6 +146,7 @@ const App = () => {
            deleteListHandler={deleteListHandler} 
             onSubmit={newTaskSubmit}
             taskHandler={newTaskHandler} 
+            tasks={tasks}
             newTask={newTask}
             isCheckedHandler={isCheckedHandler} />
         </Route>
