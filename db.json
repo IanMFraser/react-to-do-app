@@ -1,46 +1,72 @@
 {
   "todos": [
     {
-      "id": 0,
-      "title": "Morning",
-      "items": [
-        {
-          "id": "task-0",
-          "items": "drink tea",
-          "isChecked": false
-        },
-        {
-          "id": "task-1",
-          "items": "exercise",
-          "isChecked": false
-        },
-        {
-          "id": "task-2",
-          "items": "make breakfast",
-          "isChecked": false
-        }
-      ]
+      "title": "afternoon",
+      "id": 3
     },
     {
-      "id": 1,
-      "title": "Afternoon",
-      "items": [
-        {
-          "id": "task-0",
-          "items": "laundry",
-          "isChecked": false
-        },
-        {
-          "id": "task-1",
-          "items": "cook lunch",
-          "isChecked": false
-        },
-        {
-          "id": "task-2",
-          "items": "code",
-          "isChecked": false
-        }
-      ]
+      "title": "evening",
+      "id": 4
+    },
+    {
+      "title": "morning",
+      "id": 5
+    }
+  ],
+  "tasks": [
+    {
+      "items": "drink iced coffee",
+      "isChecked": false,
+      "todosId": 3,
+      "id": 11
+    },
+    {
+      "items": "go for walk",
+      "isChecked": false,
+      "todosId": 3,
+      "id": 12
+    },
+    {
+      "items": "haircut",
+      "isChecked": false,
+      "todosId": 3,
+      "id": 13
+    },
+    {
+      "items": "code",
+      "isChecked": false,
+      "todosId": 3,
+      "id": 14
+    },
+    {
+      "items": "happy hour",
+      "isChecked": false,
+      "todosId": 4,
+      "id": 15
+    },
+    {
+      "items": "make dinner",
+      "isChecked": false,
+      "todosId": 4,
+      "id": 16
+    },
+    {
+      "items": "feed cat",
+      "isChecked": false,
+      "todosId": 4,
+      "id": 17
+    },
+    {
+      "items": "clean litter",
+      "isChecked": false,
+      "todosId": 4,
+      "id": 18
+    },
+    {
+      "items": "watch tv",
+      "isChecked": false,
+      "todosId": 4,
+      "id": 19
     }
   ]
 }
