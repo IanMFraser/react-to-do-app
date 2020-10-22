@@ -16,7 +16,8 @@ const App = () => {
   //is page still loading? 
   const [ isLoading, setIsLoading ] = useState(true)
 
-  const url = 'http://localhost:3001'
+  //const url = 'http://localhost:3001'
+  const url = "https://my-json-server.typicode.com/IanMFraser/json-for-to-do-app"
 
   //collect the data from db.json
   useEffect(() => {
