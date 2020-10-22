@@ -7,15 +7,18 @@ import axios from 'axios'
 
 const App = () => {
 
-  //toDoLists state holds aa list of objects that represent todo lists
-  //each object has an id (int), a title (string), and an items key(list of objects)
+  //toDoLists state holds a list of objects that hold a todo lists id and title
   const [ toDoLists, setToDoLists ] = useState([])
+  //tasks state holds a list of objects that hold a task, an id, isChecked, and which list it belongs to
   const [ tasks, setTasks ] = useState([])
+  //new task state is for adding a new task to the toDoForm input
   const [ newTask, setNewTask ] = useState('')
+  //is page still loading? 
   const [ isLoading, setIsLoading ] = useState(true)
 
   const url = 'http://localhost:3001'
 
+  //collect the data from db.json
   useEffect(() => {
     axios.all([
       axios.get(`${url}/todos`), 
@@ -38,16 +41,14 @@ const App = () => {
     setNewTask(e.target.value)
   }
 
-   //event handler to update toDo list on form submission
+   //handler to add new task on form submission
    const newTaskSubmit = (e, id) => {
     e.preventDefault()
-    const newId = tasks.length
 
     if (newTask === ''){
       alert("Task cannot be empty")
     } else {
       const tempTask = {
-        id: newId,
         items: newTask,
         isChecked: false,
         todosId: id
@@ -65,16 +66,15 @@ const App = () => {
     }
   }
 
-  //create a new todo page
+  //create a new todo list
   const newListHandler = () => {
     const title = window.prompt("Please name new To-Do list:", "list name")
-    const newId = toDoLists.length;
+   
   
     if (title === '') {
       alert('Title can not be empty')
     } else if (title !== null) {
       const newList = {
-        "id": newId,
         "title": title
       }
 
@@ -87,7 +87,7 @@ const App = () => {
     }
   }
         
-  //delete a todo page by it's title
+  //delete a todo list by its id
   const deleteListHandler = (id) => {
     const todoCopy = toDoLists.filter(obj => obj.id !== id);
     let result = window.confirm('Delete list?');
@@ -102,7 +102,7 @@ const App = () => {
     }
   }
 
-  //changeTitle
+  //change list title state and update db.json - called in editTitle
   const updateTitle = (id, newTitle) => {
     const  obj = toDoLists.find( l => l.id === id)
     const updateObj = {...obj,"title": newTitle}
@@ -114,7 +114,7 @@ const App = () => {
     
   }
 
-  //edit title handler
+  //edit title of list
   const editTitle = (id, title) => {
     const newTitle = window.prompt("Please enter a new title: ", title);
 
@@ -125,6 +125,7 @@ const App = () => {
       }
   }
 
+  //update isChecked field in db.json
   const isCheckedHandler = (e, id) => {
     console.log(e.target.checked)
     console.log(id)
@@ -150,7 +151,7 @@ const App = () => {
             newTask={newTask}
             isCheckedHandler={isCheckedHandler} />
         </Route>
-        <Route path='/'>
+        <Route path={"/" | "/todo"}>
           <MainPage 
             toDoLists={toDoLists} 
             newListHandler={newListHandler} 

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const TitleBar = ({ title, deleteFormHandler }) => {
+    //history is used to return to home page when arrow button is pressed
     let history = useHistory();
     
     return( 

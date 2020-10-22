@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DisplayLists = ({ lists, deleteListHandler, editTitleHandler }) => {
     
+    //store the deleteListHandler in a function
     const deleteListPage = (id) => {
         deleteListHandler(id)
     }
