@@ -7,10 +7,6 @@
     {
       "title": "evening",
       "id": 4
-    },
-    {
-      "title": "morning",
-      "id": 5
     }
   ],
   "tasks": [
@@ -28,25 +24,25 @@
     },
     {
       "items": "haircut",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 3,
       "id": 13
     },
     {
       "items": "code",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 3,
       "id": 14
     },
     {
       "items": "happy hour",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 4,
       "id": 15
     },
     {
       "items": "make dinner",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 4,
       "id": 16
     },
@@ -58,15 +54,21 @@
     },
     {
       "items": "clean litter",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 4,
       "id": 18
     },
     {
       "items": "watch tv",
-      "isChecked": false,
+      "isChecked": true,
       "todosId": 4,
       "id": 19
+    },
+    {
+      "items": "task",
+      "isChecked": true,
+      "todosId": 3,
+      "id": 24
     }
   ]
 }
